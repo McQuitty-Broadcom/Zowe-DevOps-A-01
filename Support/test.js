@@ -64,30 +64,26 @@ function deleteMarble(color, callback) {
 *
 */
 function getMarbleQuantity(color, callback) {
-  var command = `zowe db2 execute sql -q "SELECT * FROM EVENT.MARBLE" --rfj`;
-
-  cmd.get(command, function(err, data, stderr) {
-    //log output
-    var content = "Error:\n" + err + "\n" + "StdErr:\n" + stderr + "\n" + "Data:\n" + data;
-    writeToFile("command-archive/get-marble-quantity", content);
-
-    if(err){
-      callback(err);
-    } else if (stderr){
-      callback(new Error("\nCommand:\n" + command + "\n" + stderr + "Stack Trace:"));
-    } else {
-      data = JSON.parse(data);
-      var desiredEntry = data.data[0].find(function(obj) {
-        return obj.COLOR.trim() === color;
-      });
-
-      if(desiredEntry === undefined){ // not found
-        callback(err, null, null);
+  var command = `zowe jobs submit data-set "${config.db2QueryJCL}" --vasc`;
+  common.simpleCommand(command, 'command-archive/get-marble-quantity', function (err, data, stderr) {
+      if(err){
+        callback(err);
       } else {
-        callback(err, desiredEntry.INVENTORY, desiredEntry.COST);
+        var pattern = new RegExp(".*\\| " + color + " .*\\|.*\\|.*\\|","g");
+        var found = data.match(pattern);
+        if(!found){
+          callback(err, null, null);
+        } else { //found
+          //found should look like nn_| COLOR       |       QUANTITY |        COST |
+          var row = found[0].split("|"),
+              quantity = Number(row[2]),
+              cost = Number(row[3]);
+
+          callback(err, quantity, cost);
+        }
       }
     }
-  });
+  );
 }
 
 /**
