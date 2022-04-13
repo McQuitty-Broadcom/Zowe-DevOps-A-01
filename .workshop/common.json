@@ -17,7 +17,7 @@
         "OPS_PROTOCOL" : "http",	
         "USS_PATCH_FOLDER" : "/u/users/baumi07",	
         "CICS_PORT" : "6000",	
-        "ENDEVOR_PORT" : "6002",	
+        "ENDEVOR_PORT" : "6032",	
         "CICS_REGION" : "CICSTRN1",	
         "DB2_PORT" : "6017",	
         "DB2_DATABASE" : "D10CPTIB",	
