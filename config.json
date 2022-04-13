@@ -8,7 +8,7 @@
     "cicsRejectUnauthorized"    : false,
     "cicsTran"                  : "MARBLE_CICS",
     "copyJCL"                   : "MAINFRAME_USER.MARBLES.JCL(MARBCOPY)",
-    "db2QueryJCL"               : "MAINFRAME_USER.MARBLES.JCL(MARBDB2",
+    "db2QueryJCL"               : "MAINFRAME_USER.MARBLES.JCL(MARBDB2)",
     "endevorEnvironment"        : "DEV",
     "endevorInstance"           : "ENDEVOR",
     "endevorPort"               : ENDEVOR_PORT,
