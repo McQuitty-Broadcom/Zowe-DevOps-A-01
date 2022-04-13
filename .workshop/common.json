@@ -7,7 +7,7 @@
         "APIML_CATALOG" : "https://10.175.80.66:10310/ui/v1/apicatalog",	
         "MAINFRAME_HOST" : "34.122.48.93",	
         "APIML_PORT" : "10310",	
-        "ZOSMF_PORT" : "443",	
+        "ZOSMF_PORT" : "1443",	
         "ZOSMF_BASE_PATH" : "api/zosmf",	
         "MAINFRAME_LPAR" : "PE01",	
         "FMP_BASE_PATH" : "api/fmp",	
