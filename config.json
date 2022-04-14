@@ -12,7 +12,7 @@
     "endevorEnvironment"        : "DEV",
     "endevorInstance"           : "ENDEVOR",
     "endevorPort"               : ENDEVOR_PORT,
-    "endevorProtocol"           : "http",
+    "endevorProtocol"           : "https",
     "endevorRejectUnauthorized" : false,
     "endevorSubsystem"          : "MARBLES",
     "endevorSystem"             : "MARBLES",
