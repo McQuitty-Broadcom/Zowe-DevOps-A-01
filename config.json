@@ -18,6 +18,6 @@
     "endevorSystem"             : "MARBLES",
     "marbleColor"               : "MARBLE_COLOR",
     "testElement"               : "MARBLE_NUM",
-    "zosmfPort"                 : 443,
+    "zosmfPort"                 : 1443,
     "zosmfRejectUnauthorized"   : false
 }
