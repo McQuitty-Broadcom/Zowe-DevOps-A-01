@@ -17,10 +17,10 @@ pipeline {
                 //Create cics, db2, endevor, fmp, and zosmf profiles, env vars will provide host, user, and password details
                 sh 'zowe profiles create cics Jenkins --port 6000 --protocol https --ru false --region-name CICSTRN1 --host dummy --user dummy --password dummy'
                 sh 'zowe profiles create db2 Jenkins --port 6017 --database D10CPTIB --host dummy --user dummy --password dummy'
-                sh 'zowe profiles create endevor Jenkins --port 6002 --protocol http --ru false --host dummy --user dummy --password dummy'
+                sh 'zowe profiles create endevor Jenkins --port 6032 --protocol http --ru false --host dummy --user dummy --password dummy'
                 sh 'zowe profiles create endevor-location Marbles --instance ENDEVOR --env DEV --sys MARBLES --sub MARBLES --ccid JENKXX --comment JENKXX'
                 sh 'zowe profiles create fmp Jenkins --port 6001 --protocol https --ru false --host dummy --user dummy --password dummy'
-                sh 'zowe profiles create zosmf Jenkins --port 443 --ru false --host dummy --user dummy --password dummy'
+                sh 'zowe profiles create zosmf Jenkins --port 1443 --ru false --host dummy --user dummy --password dummy'
             }
         }
         stage('build') {
