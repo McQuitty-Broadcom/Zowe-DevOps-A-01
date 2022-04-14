@@ -69,15 +69,6 @@ function createAndSetProfiles(host, user, pass, callback){
     {
       command: "zowe profiles set cics zw",
       dir: "command-archive/set-cics-profile"
-    },
-    {
-      command: `zowe profiles create db2 zw --host ${host} --user ${user} --pass ${pass}` +
-               ` --port ${config.db2Port} --database ${config.db2Database} --ow`,
-      dir: "command-archive/create-db2-profile"
-    },
-    {
-      command: "zowe profiles set db2 zw",
-      dir: "command-archive/set-db2-profile"
     }
   ];
   submitMultipleSimpleCommands(commands, callback);
