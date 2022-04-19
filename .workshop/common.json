@@ -5,7 +5,7 @@
         "CHE_TERMINAL" : "zowe/cli",	
         "CHE_STACK" : "Workshop Stack",	
         "APIML_CATALOG" : "https://10.175.80.66:10310/ui/v1/apicatalog",	
-        "MAINFRAME_HOST" : "34.122.48.93",	
+        "MAINFRAME_HOST" : "104.208.142.8",	
         "APIML_PORT" : "10310",	
         "ZOSMF_PORT" : "1443",	
         "ZOSMF_BASE_PATH" : "api/zosmf",	
