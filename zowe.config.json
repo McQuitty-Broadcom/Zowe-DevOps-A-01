@@ -1,0 +1,192 @@
+{
+    "$schema": "./zowe.schema.json",
+    "profiles": {
+        "zosmf": {
+            "type": "zosmf",
+            "properties": {
+                "port": 1443
+            },
+            "secure": []
+        },
+        "tso": {
+            "type": "tso",
+            "properties": {
+                "account": "",
+                "codePage": "1047",
+                "logonProcedure": "IZUFPROC"
+            },
+            "secure": []
+        },
+        "ssh": {
+            "type": "ssh",
+            "properties": {
+                "port": 22
+            },
+            "secure": []
+        },
+        "db2": {
+            "type": "db2",
+            "properties": {},
+            "secure": []
+        },
+        "cics": {
+            "type": "cics",
+            "properties": {},
+            "secure": []
+        },
+        "endevor": {
+            "type": "endevor",
+            "properties": {
+                "port": 6032,
+                "protocol": "https"
+            },
+            "secure": []
+        },
+        "endevor-location": {
+            "type": "endevor-location",
+            "properties": {
+                "instance": "ENDEVOR",
+                "environment": "DEV",
+                "system": "",
+                "subsystem": "",
+                "type": "",
+                "stageNumber": "",
+                "maxrc": 8
+            },
+            "secure": []
+        },
+        "fmp": {
+            "type": "fmp",
+            "properties": {},
+            "secure": []
+        },
+        "ops": {
+            "type": "ops",
+            "properties": {},
+            "secure": []
+        },
+        "base": {
+            "type": "base",
+            "properties": {
+                "host": "MAINFRAME_HOST",
+                "rejectUnauthorized": true
+            },
+            "secure": [
+                "user",
+                "password"
+            ]
+        },
+        "ebg": {
+            "type": "ebg",
+            "properties": {},
+            "secure": []
+        },
+        "my_base": {
+            "type": "base",
+            "properties": {
+                "rejectUnauthorized": false
+            },
+            "secure": []
+        },
+        "marbles": {
+            "type": "endevor-location",
+            "properties": {
+                "instance": "ENDEVOR",
+                "environment": "DEV",
+                "system": "MARBLES",
+                "subsystem": "MARBLES",
+                "ccid": "JENKINS",
+                "comment": "JENKINS"
+            }
+        },
+        "zw": {
+            "properties": {},
+            "secure": [
+                "host",
+                "user",
+                "password"
+            ],
+            "profiles": {
+                "zosmf": {
+                    "type": "zosmf",
+                    "properties": {
+                        "port": 1443
+                    }
+                },
+                "tso": {
+                    "type": "tso",
+                    "properties": {
+                        "codePage": "1047",
+                        "logonProcedure": "IZUFPROC",
+                        "account": "124400000"
+                    }
+                },
+                "ssh": {
+                    "type": "ssh",
+                    "properties": {
+                        "port": 22
+                    }
+                },
+                "cics": {
+                    "type": "cics",
+                    "properties": {
+                        "port": 6000,
+                        "protocol": "https",
+                        "regionName": "CICSTRN1"
+                    }
+                },
+                "db2": {
+                    "type": "db2",
+                    "properties": {
+                        "port": 6017,
+                        "database": "D10CPTIB"
+                    }
+                },
+                "endevor": {
+                    "type": "endevor",
+                    "properties": {
+                        "port": 6032,
+                        "protocol": "https"
+                    }
+                },
+                "fmp": {
+                    "type": "fmp",
+                    "properties": {
+                        "port": 6005,
+                        "protocol": "https"
+                    }
+                },
+                "jclcheck": {
+                    "type": "jclcheck",
+                    "properties": {
+                        "port": "6028",
+                        "jclcheckOptions": "NOAS NOAU NOHCD NOJCL NORES NOSIGN",
+                        "protocol": "https"
+                    }
+                },
+                "ops": {
+                    "type": "ops",
+                    "properties": {
+                        "port": "6007",
+                        "protocol": "https"
+                    }
+                }
+            }
+        }
+    },
+    "defaults": {
+        "zosmf": "zw.zosmf",
+        "tso": "zw.tso",
+        "ssh": "zw.ssh",
+        "db2": "zw.db2",
+        "cics": "zw.cics",
+        "endevor": "zw.endevor",
+        "endevor-location": "marbles",
+        "fmp": "zw.fmp",
+        "ops": "zw.ops",
+        "base": "my_base",
+        "ebg": "ebg",
+        "jclcheck": "zw.jclcheck"
+    },
+    "autoStore": true
+}
