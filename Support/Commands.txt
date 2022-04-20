@@ -1,18 +1,11 @@
-#
-# Should have already been done for you
-#
-npm install
-npm install -g gulp-cli
-
 # 
 # Create your profiles
 #
-gulp setupProfiles
+zowe files list ds MAINFRAME_USER.*
 
 #
 # Verify Setup
 #
-zowe profiles list zosmf
 zowe zosmf check status
 zowe files list ds "MAINFRAME_USER.MARBLES.*"
 
@@ -24,7 +17,7 @@ zowe endevor list elements
 #
 # Update Endevor Elements
 #
-zowe endevor ret element MARBLE_NUM --type COBOL --tf MARBLE_NUM.cbl --os
+zowe endevor ret element MARBLE_NUM --type COBOL --tf MARBLE_NUM.cbl --sn 1
 
 #
 # Edit the code in Che, then update it
@@ -34,8 +27,8 @@ zowe endevor update element MARBLE_NUM --type COBOL --ff MARBLE_NUM.cbl --os
 #
 # Generate the Elements manually
 #
-zowe endevor generate element MARBLE_NUM --type COBOL --os
-zowe endevor generate element MARBLE_NUM --type LNK --os
+zowe endevor generate element MARBLE_NUM --type COBOL --sn 1
+zowe endevor generate element MARBLE_NUM --type LNK --sn 1
 
 #
 # Start Using Gulp.
@@ -83,6 +76,6 @@ zowe cics refresh program MARBLE_NUM
 # Execute CICS program
 zowe console issue command "F CICS_REGION,MARBLE_CICS CRE MARBLE_COLOR 1 1" --cn MAINFRAME_USER
 # Check DB
-zowe db2 execute sql -q "select * from EVENT.MARBLE"
+zowe jobs submit ds "MAINFRAME_USER.MARBLES.JCL(MARBDB2)" --vasc
 
 
