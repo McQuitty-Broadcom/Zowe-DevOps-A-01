@@ -22,16 +22,6 @@ zowe files list ds "MAINFRAME_USER.MARBLES.*"
 zowe endevor list elements
 
 #
-# Validate CICS Profile
-#
-zowe cics get resource CICSProgram -c "PROGRAM=MARB*" --rft table --rfh --rff program status length
-
-#
-# Validate DB2 Profile
-#
-zowe db2 execute sql -q "SELECT * FROM EVENT.MARBLE"
-
-#
 # Update Endevor Elements
 #
 zowe endevor ret element MARBLE_NUM --type COBOL --tf MARBLE_NUM.cbl --os
@@ -68,8 +58,8 @@ gulp deploy
 #
 # Manually verify
 #
-zowe console issue command "F CICS_REGION,MARBLE_CICS CRE COLOR 1 2" --cn MAINFRAME_USER
-zowe db2 execute sql -q "SELECT * FROM EVENT.MARBLE"
+zowe console issue command "F CICS_REGION,MARBLE_CICS CRE MARBLE_COLOR 1 2" --cn MAINFRAME_USER
+zowe jobs submit ds "MAINFRAME_USER.MARBLES.JCL(MARBDB2)" --vasc 
 
 # 
 # Run automated tests
@@ -91,7 +81,7 @@ zowe jobs submit ds "MAINFRAME_USER.MARBLES.JCL(MARBIND)" --vasc
 # CICS Refresh
 zowe cics refresh program MARBLE_NUM
 # Execute CICS program
-zowe console issue command "F CICS_REGION,MARBLE_CICS CRE COLOR 1 1" --cn MAINFRAME_USER
+zowe console issue command "F CICS_REGION,MARBLE_CICS CRE MARBLE_COLOR 1 1" --cn MAINFRAME_USER
 # Check DB
 zowe db2 execute sql -q "select * from EVENT.MARBLE"
 
