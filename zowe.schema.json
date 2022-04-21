@@ -57,7 +57,7 @@
                                             "port": {
                                                 "type": "number",
                                                 "description": "The z/OSMF server port.",
-                                                "default": 443
+                                                "default": 1443
                                             },
                                             "user": {
                                                 "type": "string",
