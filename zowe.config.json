@@ -92,6 +92,7 @@
             "type": "endevor-location",
             "properties": {
                 "instance": "ENDEVOR",
+                "stageNumber": "1",
                 "environment": "DEV",
                 "system": "MARBLES",
                 "subsystem": "MARBLES",
