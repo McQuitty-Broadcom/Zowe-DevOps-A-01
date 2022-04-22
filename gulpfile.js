@@ -21,59 +21,6 @@ var cmd = require('node-cmd'),
   * @param {string} dir     Directory to download command output to 
   */
 
- /**
-* Creates zw (Zowe-Workshop) profiles for project and sets them as default
-* @param {string}           host     z/OS host the project is running against
-* @param {string}           user     username
-* @param {string}           pass     password
-* @param {awaitJobCallback} callback function to call after completion
-*/
-function createAndSetProfiles(host, user, pass, callback){
-  var commands = [
-    {
-      command: `zowe profiles create zosmf zw --host ${host} --user ${user} --pass ${pass}` +
-         ` --port ${config.zosmfPort} --ru ${config.zosmfRejectUnauthorized} --ow`,
-      dir: "command-archive/create-zosmf-profile"
-    },
-    {
-      command: "zowe profiles set zosmf zw",
-      dir: "command-archive/set-zosmf-profile"
-    },
-    {
-      command: `zowe profiles create endevor zw --host ${host} --user ${user}  --pass ${pass}` +
-               ` --port ${config.endevorPort} --ru ${config.endevorRejectUnauthorized}` + 
-               ` --protocol  ${config.endevorProtocol} --ow`,
-      dir: "command-archive/create-endevor-profile"
-    },
-    {
-      command: "zowe profiles set endevor zw",
-      dir: "command-archive/set-endevor-profile"
-    },
-    {
-      command: `zowe profiles create endevor-location zw --instance ${config.endevorInstance}` +
-               ` --environment ${config.endevorEnvironment} --system ${config.endevorSystem}` +
-               ` --subsystem ${config.endevorSubsystem} --ccid ${user}` + 
-               ` --maxrc 0 --stage-number 1 --comment ${user} --ow`,
-      dir: "command-archive/create-endevor-location-profile"
-    },
-    {
-      command: "zowe profiles set endevor-location zw",
-      dir: "command-archive/set-endevor-location-profile"
-    },
-    {
-      command: `zowe profiles create cics zw --host  ${host} --user ${user} --password ${pass}` +
-               ` --port ${config.cicsPort} --region-name ${config.cicsRegion}` +
-               ` --protocol ${config.cicsProtocol} --ru ${config.cicsRejectUnauthorized} --ow`,
-      dir: "command-archive/create-cics-profile"
-    },
-    {
-      command: "zowe profiles set cics zw",
-      dir: "command-archive/set-cics-profile"
-    }
-  ];
-  submitMultipleSimpleCommands(commands, callback);
-}
-
 /**
 * Runs command and calls back without error if successful
 * @param {string}           command           command to run
@@ -209,12 +156,4 @@ gulp.task('cics-refresh', 'Refresh(new-copy) ' + config.cicsProgram + ' CICS Pro
 gulp.task('copy', 'Copy LOADLIB & DBRMLIB to test environment', function (callback) {
   var ds = config.copyJCL;
   submitJobAndDownloadOutput(ds, "job-archive/copy", 4, callback);
-});
-
-gulp.task('setupProfiles', 'Create project profiles and set them as default', function (callback) {
-  var host, user, pass;
-  host = readlineSync.question('Host name or IP address: ');
-  user = readlineSync.question('Username: ');
-  pass = readlineSync.question('Password: ', { hideEchoBack: true });
-  createAndSetProfiles(host, user, pass, callback);
 });
