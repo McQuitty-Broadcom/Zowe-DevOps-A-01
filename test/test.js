@@ -201,7 +201,7 @@ describe('Marbles', function () {
           data = data.trim();
           assert.equal(data, "+SUCCESS", "Unsuccessful marble creation");
 
-          getMarbleQuantity(COLOR, function(err, quantity, cost){
+          getMarbleQuantity(COLOR, function(err, quantity){
             if(err){
               throw err;
             }
