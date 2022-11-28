@@ -68,7 +68,7 @@
         "base": {
             "type": "base",
             "properties": {
-                "host": "MAINFRAME_HOST",
+                "host": "104.208.142.8",
                 "rejectUnauthorized": true
             },
             "secure": [
